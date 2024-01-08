@@ -1,0 +1,78 @@
+clc
+%Exercise 1
+disp('--- Exercise 1 ---')
+clear all
+p = poly(1:20);
+roots(p)
+p(2) = p(2) + 10^(-14);
+roots(p)
+
+%%
+%Exercise 2
+disp('--- Exercise 2 ---')
+clear
+2^1023
+2^2024
+realmax
+realmin
+%%
+%Exercise 3
+disp('--- Exercise 3 ---')
+clear
+format long e
+sqrt(2)
+%%
+%Exercise 4
+disp('--- Exercise 4 ---')
+clear
+10^8 + 10^(-7)
+10^8 + 10^(-8)
+%%
+%Exercise 5
+clc
+disp('--- Exercise 5 ---')
+clear
+result = 1;
+for i= 1:10^9
+  result = result + 10^(-8);
+end
+result
+%%
+%Exercise 6
+disp('--- Exercise 6 ---')
+clear
+for n = 1:47
+    disp(sprintf('иру %d', n))
+    eps = 2^(-n);
+    (100+eps-100)/eps
+end
+%%
+%Exercise 7
+disp('--- Exercise 7 ---')
+clear
+syms x
+I = 1/exp(1);
+for i=2:30
+    sprintf('n = %d',i) 
+   I = 1 - i*I 
+end
+%%
+%Exercise 8
+clc
+disp('--- Exercise 8 ---')
+clear
+format long e
+result = 0;
+x = 14*pi;
+i = 0;
+while(true)
+disp(sprintf('иру %d',i))
+f = (-1)^i * x^(2*i + 1) / factorial(2*i + 1)
+result = result + f
+if (abs(f) < 10^(-17))
+break;
+end
+i = i + 1;
+end
+result 
+sin(x)
