@@ -1,0 +1,170 @@
+
+A{
+    text-decoration:none;
+}
+A:visited{
+    text-decoration:none;
+}
+A:active{
+    text-decoration:none;
+}
+nav {
+	background-color: #4682B4;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+}
+/* убираем отступы и поля, а также list-style для "ul", 
+* и добавляем "position:relative" */
+nav ul {
+    padding:0;
+	margin:0;
+    top:0;
+	list-style: none;
+	position: relative;
+}
+/* применяем inline-block позиционирование к элементам навигации */
+nav ul li {
+    margin: 0px -4px 0 0;
+    display:inline-block;
+    background-color: #4682B4;
+    width: 20%;
+}
+/* стилизуем ссылки */
+nav a {
+	display:block;
+	padding:0 10px;
+	color:#FFF;
+	font-size:20px;
+	line-height: 60px;
+    white-space: nowrap;
+}
+/* изменяем цвет фона при наведении курсора */
+nav a:hover {
+	background-color: #000000;
+}
+@font-face {
+	font-family: 'Quintessential'; 
+	src: local('Quintessential'), 
+		url(font.ttf); 
+}
+.mylink{
+    color: #1D1B7C;
+  font-family: 'Quintessential', cursive;
+  font-weight: bolder;
+  font-size:20px;
+  text-align: left;
+}
+.mylink:hover {
+  background-color: #4682B4;
+}
+/* скрываем выпадающие списки по умолчанию * и задаем абсолютное позиционирование */
+nav ul ul {
+	display: none;
+	position: absolute;
+	top: 100%;
+}
+/* отображаем выпадающий список при наведении */
+nav ul li:hover > ul {
+	display:inherit;
+}
+/* первый уровень выпадающего списка */
+nav ul ul li {
+    min-width: 180px;
+	float:none;
+	display:list-item;
+    position: relative;
+}
+.main {
+    margin-top: 80px;
+}
+.main a{
+    color:black;
+}
+.particular-item {
+  align-self: flex-end; 
+}
+.curses{
+    display: flex;
+    background-color: #4682B4;
+    color: white;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    width: 500px;
+    height: 250px;
+}
+
+/* --------------------------------------------------- */
+
+.form {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.form h1 {
+	margin: 30px 100px;
+	padding: 0;
+	text-align: center;
+	color: #000000;
+	font-size: 30px;
+	text-transform: uppercase;
+}
+
+.input-form {
+	margin: 15px 40px;
+	text-align: center;
+}
+
+.input-form input {
+	padding: 10px;
+	width: 100%;
+	color: #000000;
+	font-size: 20px;
+	background: none;
+	outline: none;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+    border-radius: 10px
+}
+
+.input-form input[type="text"]:focus, .input-form input[type="password"]:focus, .input-form input[type="email"]:focus, .input-form input[type="fon-number"]:focus {
+	border: 1px solid #1D1B7C;
+}
+
+.input-form input[type="submit"] {
+	margin-top: 20px;
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	border: none;
+	background: #4682B4;
+	transition: .3s;
+}
+
+.input-form input[type="submit"]:hover {
+	background: #000000;
+}
+
+.form a  {
+	display: block;
+	padding: 0 0 30px;
+	text-align: center;
+	color: #000000;
+	text-decoration: none;
+	transition: .3s;
+    font-size: 18px;
+}
+
+.form a[type="reg"] {
+    display: block;
+    margin: -15px 0 0 0;
+	text-align: center;
+	color: #000;
+	text-decoration: none;
+	transition: .3s;
+    font-size: 18px;
+}

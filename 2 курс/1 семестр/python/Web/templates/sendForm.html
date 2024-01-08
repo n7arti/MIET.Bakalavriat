@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/telegramForm.js') }}"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="form-contact" class="contact-form" autocomplete="off">
+
+    <p> Закажите обратный звонок и наш консультант свяжется с вами </p>
+    <p class="contact-form__message"></p>
+
+    <!-- Поле с именем -->
+    <ul>
+        <input id="name" name="name" type="text" class="contact-form__input_name"
+               placeholder="Введите ваше имя">
+    </ul>
+
+    <ul>
+        <!-- Поле с телефоном -->
+        <input id="phone" name="phone" type="tel" class="contact-form__input_phone"
+               placeholder="Введите ваш телефон">
+
+    </ul>
+
+    <ul>
+        <p>Комментарий<br>
+            <textarea name="comment" cols="60" rows="20"></textarea> </p>
+
+
+    </ul>
+    <ul>
+        <!--Поле с темой в письме-->
+        <input name="theme" type="hidden" class="contact-form__input_theme"
+               value="Заявка с сайта Course">
+    </ul>
+    <!--Кнопка отправки формы-->
+
+    <ul>
+        <button type="submit" class="contact-form__button">Отправить</button>
+    </ul>
+</form>
+
+<script>
+    $("#form-contact").validate({
+        rules: {
+            phone: {
+                digits: true,
+                min: 11
+            },
+            name: {
+                min: 2,
+            }
+        },
+        messages: {
+            phone: {
+                digits: "Только цифры",
+                min: "Не является номером телефона"
+            },
+            name: {
+                min: "Не может содержать меньше 2 символов"
+            }
+        }
+    });
+</script>
+
+
+
+
+</body>
+</html>
