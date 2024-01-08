@@ -1,0 +1,39 @@
+%Task 3
+clear
+disp('---Task 3---')
+a=[-6 0 0 ]
+b=[0 3 0]
+c=[0 0 3]
+O = [
+    0;
+    0;
+    0
+    ];
+%Уравнение плоскости
+syms x y z
+T = [
+    x-6 -6 -6;
+    y 3 0;
+    z 0 3
+    ];
+det(T)
+%из уравнения плоскости
+A = 9;
+B = 18;
+C = 18;
+D = -54;
+%расстояние
+R = abs(A*O(1) + B*O(2) + C*O(3) + D)/sqrt(A^2 + B^2 +C^2)
+x = -5:0.1:5;
+y = -5:0.1:5;
+[X,Y] = meshgrid(x,y);
+%В уравнении прямой переносим все вправо, z оставляем слева
+Z = -(A.*X + B.*Y + D)/C;
+plot3(X,Y,Z,'or','MarkerSize',8, 'LineWidth',2)
+hold on
+plot3(0,0,0,'*b')
+grid on
+xlabel('x'), ylabel('y'), zlabel('z')
+title('9*x + 18*y + 18*z - 54 = 0')
+view(20,25)
+

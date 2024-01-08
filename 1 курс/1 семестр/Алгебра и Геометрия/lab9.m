@@ -1,0 +1,99 @@
+clc
+clear
+%Exercise 1
+disp('--- Exercise 1 ---')
+clear
+a = pi/6;
+A = [
+    cos(a) -sin(a);
+    sin(a) cos(a);
+    ];
+x = [
+    2;
+    -2;
+    ];
+A1 = inv(A);
+x1 = A1*x
+hold on
+grid on
+quiver(0,0,x(1)-0,x(2)-0,0,'r')
+quiver(0,0,x1(1)-0,x1(2)-0,0,'b')
+line([-3 3],[0 0],'Color','k')
+line([0 0],[-3 3],'Color','k')
+
+%Exercise 2
+disp('--- Exercise 2 ---')
+L = -2;
+C1 = L*A;
+C2 = [
+  L*cos(a) -L*sin(a);
+  L*sin(a) L*cos(a);
+    ];
+C1==C2
+%%
+%Exercise 3
+disp('--- Exercise 3 ---')
+clear
+e1 = [
+    1;
+    -1;
+    5
+    ];
+e2 = [
+    2;
+    1;
+    1
+    ];
+e3 = [
+    3;
+    0;
+    4;
+    ]
+A = zeros(3);
+A(:,1)=e1;
+A(:,2)=e2;
+A(:,3)=e3;
+det(A)% не равен 0, следовательно, составляют базис
+format rat
+e = [A(:,1)];
+for k= 2:1:3
+n=0;
+for i=1:1:k-1
+n=n+dot(A(:,k),e(:,i))/(norm(e(:,i)))^2*e(:,i);
+end
+e=[e A(:,k)-n];
+end
+e
+%%
+    
+%Exercise 4
+disp('--- Exercise 4 ---')
+clear
+A = [
+    -2 2 -3;
+    1 2 1;
+    2 -1 2;
+    ];
+a1 = [
+    1;
+    2;
+    2;
+    ];
+a2 = [
+    -2;
+    -1;
+    2;
+    ];
+a3 = [
+    2;
+    1;
+    0;
+    ];
+A1 = A*a1;
+A2 = A*a2;
+A3 = A*a3;
+A(:,1)=A1;
+A(:,2)=A2;
+A(:,3)=A3;
+format rat
+A

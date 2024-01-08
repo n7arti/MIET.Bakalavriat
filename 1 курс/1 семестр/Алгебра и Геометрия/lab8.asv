@@ -1,0 +1,67 @@
+clc
+clear
+%Exercise 1
+disp('--- Exercise 1 ---')
+clear
+x=-3/2:.1/2:3/2;
+hold on,grid on,axis equal
+h=plot(x, tan(x));
+title('Task1')
+for i=1:5:45
+h=plot(x, tan(x));
+rotate(h,[0 0 1],i),pause(.1) 
+M(i)=getframe;
+end
+%%
+%Exercise 2
+disp('--- Exercise 2 ---')
+clear
+figure(2)
+grid on, hold on, axis equal,view(15,51)
+quiver3(-10,0,0,10,0,0,2,'Linewidth',2,'Color','r')
+x=-10:.1:10;
+h=[3*cosh(x);2*sinh(x)];
+L=plot(h(1,:),h(2,:),'Linewidth',2);
+xlabel('x'),ylabel('y'),zlabel('z')
+axis([-6 6 -6 6])
+for i=1:6:360 
+    L=plot(h(1,:),h(2,:),'m');
+    rotate(L,[1 0 0],i),pause(0.05)
+end
+x=-10:.1:10;
+h=[-3*cosh(x);2*sinh(x)];
+L=plot(h(1,:),h(2,:),'Linewidth',2);
+xlabel('x'),ylabel('y'),zlabel('z')
+axis([-6 6 -6 6])
+for i=1:6:360 
+    L=plot(h(1,:),h(2,:),'m');
+    rotate(L,[1 0 0],i),pause(0.05)
+end
+%%
+%Exercise 3
+disp('--- Exercise 3 ---')
+clear
+figure(3)
+a=1;b=1;
+u=(-2:0.02:2)';
+phi=0:0.02:2*pi;
+X=cos(u)*(a+b*cos(phi));
+Y=sin(u)*(a+b*cos(phi));
+Z=b*((ones(size(u)))*(sin(phi)));
+mesh(X,Y,Z);
+xlabel('x'),ylabel('y'),zlabel('z')
+%%
+%Exercise 4
+disp('--- Exercise 4 ---')
+clear
+figure(4)
+[X,Y,Z] = meshgrid(-10:0.5:10,-10:0.5:10,-5:0.5:5);
+a=1;b=1;
+V = X.^2/a^2 + Y.^2/b^2 ;
+p=patch(isosurface(X,Y,Z,V,1));
+set(p,'FaceColor','red','EdgeColor','none');
+view(3);
+axis equal
+grid on
+camlight
+ 

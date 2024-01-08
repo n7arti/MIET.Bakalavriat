@@ -1,0 +1,88 @@
+clc
+clear
+%Exercise 1
+disp('--- Exercise 1 ---')
+clear
+t=0:pi/100:10*pi;
+r = t;
+r = max(0,r);
+polar(t,r)
+grid on
+axis square
+title('task 1')
+%%
+%Exercise 2
+disp('--- Exercise 2 ---')
+clear
+ezplot('9*x^2+4*y^2-18*x+16*y-11=0')
+hold on
+xlabel('x'), ylabel('y');
+line([-10 10],[0 0],'Color','k');
+line([0 0],[-10 10],'Color','k');
+x1 = 1;
+x2 = 1;
+y1 = sqrt(5)-2; 
+y2 = -sqrt(5)-2;
+x = -10:0.2:10;
+y11 = 9/sqrt(5)-2;
+plot(x,y11,'g*');
+y22 = -9/sqrt(5)-2;
+plot(x,y22,'g*');
+plot(x1,y1,'*','MarkerFaceColor','b','MarkerSize',10)
+plot(x2,y2,'*','MarkerFaceColor','b','MarkerSize',10)
+text(1.2, 0.7, 'F1')
+text(1.2, -4.7, 'F2')
+disp(' аноническое уравнение ((x-1)^2)/4+((y+2)^2)/9 = 1')
+disp('÷ентр в точке (1;-2), потому что:');
+disp('x1 = x - 1; y1 = y + 2')
+disp('”равнение приобрело вид: (x11^2)/9 + (y11^2)/4 = 1')
+disp('a = 3, b = 2, c = sqrt(5), e = sqrt(5)/3')
+disp('‘окусы F1(1,sqrt(5)-2) и F2(1,-sqrt(5)-2)')
+disp('ƒиректриссы y = 9/sqrt(5)-2 и y = -9/sqrt(5)-2')
+grid on
+axis square
+axis equal
+%%
+%Exercise 3
+disp('--- Exercise 3 ---')
+clear
+syms x y x1 y1 
+ezplot('x^2-2*x*y+y^2-10*x-6*y+25=0')
+hold on
+disp(' аноническое уравнение параболы:')
+disp('(x1-sqrt(2)/2)^2 = 4*sqrt(2)*(y1 - 3/sqrt(2))')
+disp('x1 = sqrt(2)/2, y1 = 3/sqrt(2), alfa = -45 grad')
+disp('¬ старой системе координаты центра (2,1)')
+xlabel('x'), ylabel('y');
+plot(2,1,'*g')
+A = 1; B = -1; C = 1;
+a = 2*B/(A-C)
+b=1/2*atan(a)
+alfa=1/2*atand(a);
+disp('”гол поворота в градусах'), alfa
+yp=x^2-2*x*y+y^2-10*x-6*y+25;
+simplify(yp)%уравнение кривой в новой системе координат
+c1=cos(b);c2=sin(b);
+x=x1*c1-y1*c2;y=x1*c2+y1*c1;
+x0=sqrt(2)/2;y0=3/sqrt(2);
+X0=[x0 y0];C=[c1 -c2;c2 c1];
+X=C*X0';%координаты центра в старой системе
+E=[1 0;0 1];%координаты старого базиса
+disp(' оординаты нового базиса'),E1=C*E'%координаты нового базиса
+line([-15 15],[0 0],'Color','k');
+line([0 0],[-15 15],'Color','k');
+line([2 10.6],[1 10.6],'color', 'r')
+line([2 10.6],[1 -10.6],'color', 'r')
+grid on
+axis([-10 10 -10 10])
+axis square
+axis equal
+%%
+%Exercise 4
+disp('--- Exercise 4 ---')
+clear
+figure(4)
+ezplot3(@(t)cosh(t),@(t)sinh(t),@(t)5+0*t)
+hold on
+ezplot3(@(t)- cosh(t),@(t)sinh(t),@(t)5+0*t)
+line([-300 0 0;300 0 0],[0 -50 0;0 300 0],[0 0 -15;0 0 15],'color','k')

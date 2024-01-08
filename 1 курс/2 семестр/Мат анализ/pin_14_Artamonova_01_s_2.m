@@ -1,0 +1,86 @@
+clear
+clc
+%ex1
+syms x
+f1 = sqrt(1-x^2);
+n = 20;
+s = 0;
+sum = 0;
+for i = 1/(n-1):1/(n-1):1;
+c = (i+s)/2;
+s = i;
+sum = sum + subs(f1,c)*1/19;
+end
+sum
+%%
+disp('--')
+%ex2
+syms x;
+f2=sym('sqrt(1-x^2)');
+I=int(f2,x)
+pretty(I)
+disp('--')
+%ex3.1
+syms x
+f3 = sym('sqrt(1-x^2)');
+I = int(f3,x,0,1)
+disp('--')
+%ex3.2
+syms x
+f1 = (1-x)^3;
+f2 = 1/(x^2 -2*x+2);
+f =int(f1,x,0,1) +int(f2,x,1,2)
+disp('--')
+%ex4
+syms x
+quad('sqrt(1-x.^2)',0,1)
+disp('--')
+%ex11
+clear
+L = 1;
+a = -4;
+b = -2;
+syms x;
+f = -x^2 +1;
+dx=b-a;
+sums = zeros(1,10);
+for i = 1:1:10;
+    n = power(2,i);
+    d = dx/(n-1);
+    p = a;
+    sum = 0;
+    for  j = a+d:d:b;
+        c = p + d/(L+1);
+        sum = sum + subs(f,c)*d;
+    end
+    sums(1,i) = sum;
+end
+sums
+disp('--')
+%ex12
+L = 1;
+a = -4;
+b = -2;
+syms x;
+f = '-x^2 +1';
+g = 'x^2 -1';
+dx=b-a;
+sums = zeros(2,10);
+for i = 1:1:10;
+    n = power(2,i);
+    d = dx/(n-1);
+    p = a;
+    sumLo = 0;
+    sumH = 0;
+    for  j = a+d:d:b;
+        c = p + d/(L+1);
+        Lo = fminbnd(f,p,p+d);
+        H = fminbnd(g,p,p+d);
+        sumLo = sumLo + Lo*d;
+        sumH = sumH + H*d;
+        p = j;
+    end
+    sums(1,i) = sumLo;
+    sums(2,i) = sumH;
+end
+sums

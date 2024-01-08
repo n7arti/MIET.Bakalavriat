@@ -1,0 +1,151 @@
+clc
+clear
+%ex1
+figure(1)
+x = 0:pi/100:pi/2;
+y = x.*cos(x);
+y1 = -pi/2:pi/100:pi/2;
+x1 = 0;
+y2 = -pi/2:pi/100:pi/2;
+x2 = pi/2;
+x3 = -pi/2:pi/100:pi/2;
+y3 = 0;
+plot(x,y)
+hold on
+plot(x1,y1,'g-')
+plot(x2,y2,'r-')
+plot(x3,y3,'m-')
+axis equal
+grid on
+f = quad('x.*cos(x)',0,pi/2)
+%%
+disp('--')
+%ex2
+clear
+syms x
+figure(2)
+f1 = @(x)x^2+2*x;
+f2 = @(x)7-4*x-x^2;
+hold on
+fplot(f1,[-5 2])
+fplot(f2,[-5 2])
+grid on
+solve((x^2+2*x)-(7-4*x-x^2))
+a = ans(1);
+b = ans(2);
+int((7-4*x-x^2)-(x^2+2*x),a,b)
+vpa(ans,4)
+%%
+disp('--')
+%ex3
+clear
+figure(3)
+hold on
+t = 0:pi/200:2*pi;
+x = cos(t);
+y = sin(t);
+plot(x,y)
+grid on
+x = 2*cos(t);
+y = 3*sin(t);
+plot(x,y)
+syms t
+x1 = cos(t);
+y1 = sin(t);
+x2 = 2*cos(t);
+y2 = 3*sin(t);
+S1 = int(abs(y1*diff(x1)),0,2*pi)
+vpa(S1,5)
+S2 = int(abs(y2*diff(x2)),0,2*pi)
+vpa(S2,5)
+%%
+disp('--')
+%ex4
+clear
+figure(4)
+t = 0:pi/200:2*pi;
+r = exp(t);
+polar(t,r);
+syms x
+S = 1/2*int(exp(x)^2,x,0,2*pi)
+%%
+disp('--')
+%ex5
+clear
+figure(5)
+syms x
+y = x^2;
+yl = diff(y);
+L = int(sqrt(1 + yl^2),1,2)
+vpa(L,4)
+x1 = -2:0.001:1;
+x2 = 1:0.001:2;
+y1 = x1.^2;
+y2 = x2.^2;
+hold on
+plot(x1,y1)
+plot(x2,y2,'r')
+plot(1,1,'or')
+plot(2,4,'or')
+grid on
+%%
+disp('--')
+%ex6
+clear
+syms t
+x = 2*cos(t);
+y = 3*sin(t);
+xl = diff(x)
+yl = diff(y)
+quad('((-2*sin(x)).^2+(3*cos(x)).^2).^(1/2)',0,2*pi)
+%%
+disp('--')
+%ex7
+clear
+syms t
+r=4*(1+cos(t));
+s=int(sqrt(r^2+diff(r)^2),0,2*pi)
+%%
+disp('--')
+%ex8
+clear
+syms x 
+y = sin(x);
+Vx = pi*int(y^2,x,0,pi)
+Vy = 2*pi*int(x*y,x,0,pi)
+%%
+disp('--')
+%ex1.1
+clear
+figure(9)
+phi = -2*pi:pi/100:2*pi;
+p1 = sqrt(2).*sin(phi);
+p2 = sqrt(cos(2*phi));
+p3 = - sqrt(cos(2*phi));
+polar(phi,p1)
+hold on
+polar(phi,p2)
+polar(phi,p3)
+syms phi
+p = cos(2*phi);
+s=int(sqrt(p^2+diff(p)^2),pi/6,5*pi/6)
+%%
+disp('--')
+%ex1.2 
+clear
+x = -1:0.1:1;
+y1 = 2 - (x.^2)./2;
+y2 = 4 - (5.*x.^2)./2;
+plot(x,y1)
+hold on
+plot(x,y2)
+grid on
+syms x
+y1 = 2 - (x^2)/2;
+y2 = 4 - (5*x^2)/2;
+V1x = pi*int(y1^2,x,-1,1);
+V2x = pi*int(y2^2,x,-1,1);
+Vx = V2x - V1x
+V1y = 2*pi*int(y1*x,x,-1,1);
+V2y = 2*pi*int(y2*x,x,-1,1);
+Vy = V2y - V1y

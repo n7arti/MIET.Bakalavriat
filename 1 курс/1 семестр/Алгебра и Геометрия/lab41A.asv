@@ -1,0 +1,119 @@
+clc
+clear
+%Exercise 1
+disp('--- Exercise 1 ---')
+clear
+A = [
+    2;
+    3;
+    ];
+B = [
+    -4;
+    -1;
+    ];
+AB = B - A;
+n = [
+    -AB(2);
+    AB(1);
+    ];
+syms D;
+D = solve(n(1).*A(1) + n(2).*A(2) + D);
+z = - D/n(2);
+C = [
+   0;
+   z;
+   ]
+plot(0,z,'r*')
+text(A(1),A(2)+0.2,'A(2,3)')
+text(-0.5,2,'C(0,2.5)')
+text(B(1),B(2)- 0.3,'B(-4,-1)')
+line([A(1) B(1)],[A(2) B(2)])
+line([-5 3],[0 0],'color','k')
+line([0 0],[-2 4],'color','k')
+grid on
+xlabel('x'),ylabel('y')
+title('Coordinates of point C')
+
+%Exercise 2
+disp('--- Exercise 2 ---')
+clear
+A = 6;
+B = 8;
+C1 = -20*2;
+C2 = 5;
+R = abs(C2 - C1)/sqrt(A^2 + B^2)
+x = -10:1:10;
+y1 = (20 - 3*x)/4;
+y2 = (-6*x - 5)/8;
+figure(2)
+plot(x,y1,'g')
+hold on
+plot(x,y2,'b')
+grid on
+xlabel('x'),ylabel('y')
+line([-10 10],[0 0],'color','k')
+line([0 0],[-10 15],'color','k')
+text(-6,10,'L1: 3x + 4y - 20 = 0')
+text(-2,-5,'L2: 6x + 8y + 5 = 0')
+title('Intersection of lines')
+
+%Exercise 3
+disp('--- Exercise 3 ---')
+clear
+y = 10/5;
+x = -10/2;
+s = 1/2*y*x
+x1 = -10:1:10;
+y1 = (2*x1+10)/5
+figure(3)
+plot(x1,y1,'g')
+hold on
+x2 = x:1:0;
+y2 = (2*x2+10)/5
+plot(x2,y2,'r')
+line([-10 10],[0 0],'color','k')
+line([0 0],[-10 10],'color','k')
+line([0 x],[0 0],'color','r')
+line([0 0],[0 y],'color','r')
+grid on
+xlabel('x'),ylabel('y')
+title('S of triangle')
+
+%Exercise 
+disp('--- Exercise 4 ---')
+clear
+A = [
+    1;
+    -2;
+    ];
+B = [
+    5;
+    4;
+    ];
+C = [
+    -2;
+    0;
+    ];
+AB1 = B - A;
+BC1 = C - A;
+AB = norm(AB1);
+BC = norm(BC1);
+w = AB/BC;
+XM = (A(1) + w*C(1))/(1 + w);
+YM = (A(2) + w*C(2))/(1 + w);
+syms x y
+f = (YM - B(2))*(x - B(1)) - (y - B(2))*(XM - B(1))
+x1 = -10:1:10;
+y1 = (14*x1)/18 + 2/18;
+figure(4)
+plot(x1,y1,'r')
+hold on 
+line([-10 10],[0 0],'color','k')
+line([0 0],[-10 10],'color','k')
+line([1 5],[-2 4],'color','b')
+line([5 -2],[4 0],'color','b')
+line([-2 1],[0 -2],'color','b')
+grid on
+xlabel('x'),ylabel('y')
+text(A,'A(
+title('Bisector')
